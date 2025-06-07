@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Log In</title>
     <link rel="shortcut icon" href="static/Logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -24,13 +24,12 @@
         main img {
             float: left;
             width: 50%;
-            height: 550px;
         }
 
         main form {
             float: right;
             width: 45%;
-            margin: 10px 10px;
+            margin: 50px 10px;
         }
 
         main form legend {
@@ -128,9 +127,9 @@
 
 <body>
     <main>
-        <img src="static/sign_up.png" alt="login image">
-        <form action="sign_up.php" method="post">
-            <legend class="fas fa-user-edit"> Sign Up</legend>
+        <img src="static/sign_in.png" alt="login image">
+        <form action="sign_in.php" method="post">
+            <legend class="fas fa-user-edit"> Log In</legend>
             <?php if ($error): ?>
                 <div class="error">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -139,22 +138,17 @@
             <?php endif; ?>
             <div class="input">
                 <i class="fas fa-user"></i>
-                <input type="text" name="name" placeholder="Name" autofocus required>
-            </div>
-            <div class="input">
-                <i class="fas fa-envelope"></i>
-                <input type="email" name="email" placeholder="Gmail" required>
-            </div>
-            <div class="input">
-                <i class="fas fa-at"></i>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="email" placeholder="Username or Gmail" autofocus required>
             </div>
             <div class="input">
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" placeholder="Password" required minlength="6">
             </div>
-            <input type="submit" name="Sign_Up" value="Sign Up">
-            <p>You already have an account? <a href="sign_in.php">Login</a></p>
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember Me</label>
+            <p><a href="">Forgot Password!</a></p>
+            <input type="submit" name="login" value="Log In">
+            <p>You don't have an account? <a href="sign_up.php">Sign Up</a></p>
         </form>
     </main>
 </body>

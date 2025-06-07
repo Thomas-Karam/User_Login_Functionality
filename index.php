@@ -1,156 +1,64 @@
-<?php include 'server.php' ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Log In</title>
-    <link rel="shortcut icon" href="image_l.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body {
-            background-color: whitesmoke;
-        }
-
-        main {
-            width: 80%;
-            overflow: auto;
-            margin: 50px auto;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 3px 3px 1px 2px rgba(0, 0, 255, 0.440);
-        }
-
-        main img {
-            float: left;
-            width: 50%;
-            height: 550px;
-        }
-
-        main form {
-            float: right;
-            width: 45%;
-            margin: 50px 10px;
-        }
-
-        main form legend {
-            color: rgba(0, 0, 255, 0.440);
-            margin: 30px auto;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        main form .input {
-            width: 93%;
-            margin: 10px 0;
-            border-bottom: 3px solid black;
-        }
-
-        main form .input:focus-within {
-            border-bottom: 3px solid rgba(0, 0, 255, 0.440);
-        }
-
-        main form .input:focus-within i {
-            color: rgba(0, 0, 255, 0.440);
-        }
-
-        main form .input i {
-            font-size: larger;
-        }
-
-        main form .input input {
-            width: 88%;
-            margin: 10px auto;
-            padding: 10px;
-            outline: none;
-            border: none;
-        }
-
-        input[type="checkbox"] {
-            margin: 20px auto;
-            width: 8%;
-        }
-
-        input[type="submit"] {
-            width: 95%;
-            margin: 20px auto;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 255, 0.440);
-            color: white;
-            font-size: 15px;
-        }
-
-        p {
-            display: inline;
-            float: right;
-            margin-right: 30px;
-        }
-
-        a {
-            color: rgba(0, 0, 255, 0.440);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .error {
-            width: 88%;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 3px solid red;
-            background-color: rgba(255, 0, 0, 0.164);
-        }
-
-        .error i {
-            color: red;
-        }
-
-        @media (max-width: 768px) {
-            main {
-                width: 90%;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="shortcut icon" href="static/Logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            body {
+                background-color: whitesmoke;
             }
 
-            main img {
-                display: none;
+            nav {
+                top: 0;
+                left: 5px;
+                right: 5px;
+                position: fixed;
+                padding: 10px;
+                color: rgba(0, 0, 255, 0.440);
+                background-color: white;
+                border-radius: 0px 0px 10px 10px;
             }
 
-            main form {
-                width: 90%;
+            nav h1 {
+                display: inline;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <main>
-        <img src="image_i.png" alt="login image">
-        <form action="index.php" method="post">
-            <legend class="fas fa-user-edit"> Log In</legend>
-            <?php if ($error): ?>
-                <div class="error">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <?php echo $error; ?>
-                </div>
+            nav button {
+                padding: 10px;
+                margin: 5px;
+                float: right;
+                border: none;
+                cursor: pointer;
+                font-size: large;
+                border-radius: 10px;
+            }
+
+            nav a {
+                color: black;
+                padding: 10px;
+                margin: 5px;
+                float: right;
+                font-size: large;
+                border-radius: 10px;
+                text-decoration: none;
+                background-color: whitesmoke;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <?php if (!$_COOKIE['name']): ?>
+                <h1>Hi, Dear</h1>
+                <a href="sign_in.php" class="fas fa-user"> Sign In</a>
+            <?php else: ?>
+                <h1>Hi, <?php echo $_COOKIE['name']; ?> </h1>
+                <a href="" class="fas fa-user"></a>
+                <button type="button" class="fas fa-shopping-cart"></button>
             <?php endif; ?>
-            <div class="input">
-                <i class="fas fa-at"></i>
-                <input type="text" class="fas" name="email" placeholder="Username or Gmail" autofocus required>
-            </div>
-            <div class="input">
-                <i class="fas fa-lock"></i>
-                <input type="password" class="fas" name="password" placeholder="Password" required minlength="6">
-            </div>
-            <input type="checkbox" id="remember">
-            <label for="remember">Remember Me</label>
-            <p><a href="">Forgot Password!</a></p>
-            <input type="submit" name="login" value="Log In">
-            <p>You don't have an account? <a href="sign_up.php">Sign Up</a></p>
-        </form>
-    </main>
-</body>
-
+        </nav>
+    </body>
 </html>

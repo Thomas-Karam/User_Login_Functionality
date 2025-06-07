@@ -14,15 +14,15 @@ if (isset($_POST['Sign_Up'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
     $password = md5($password);
 
-    $query = "SELECT * FROM users WHERE email='$email' OR username='$username'";
+    $query = "SELECT * FROM login WHERE email='$email' OR username='$username'";
     $result = mysqli_query($db, $query);
 
     if (mysqli_num_rows($result) > 0) {
         $error = 'Email or Username already exists';
     } else {
-        $query = "INSERT INTO users (name, email, username ,password) VALUES ('$name', '$email', '$username','$password')";
+        $query = "INSERT INTO login (name, email, username ,password) VALUES ('$name', '$email', '$username','$password')";
         $result = mysqli_query($db, $query);
-        header('location: index.php');
+        header('location: sign_in.php');
     }
 }
 
@@ -31,13 +31,13 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $password = md5($password);
 
-    $query = "SELECT * FROM users WHERE (email='$email' OR username='$email') AND password='$password'";
+    $query = "SELECT * FROM login WHERE (email='$email' OR username='$email') AND password='$password'";
     $result = mysqli_query($db, $query);
 
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
         setcookie('name', $row['name'], time() + 3600, '/');
-        header('location: home.php');
+        header('location: index.php');
     } else {
         $error = 'Invalid username or email or password';
     }
